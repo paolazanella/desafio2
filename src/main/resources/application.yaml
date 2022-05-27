@@ -1,10 +1,10 @@
- spring: 
+spring:
     application:
-        name: interesse-service
+        name: adminstrador-service
     datasource:
         url: jdbc:mysql://localhost:3306/desafio2
         username: root
-        password:
+        password: 
     jpa:
         hibernate:
             ddlAuto: update
@@ -12,18 +12,13 @@
             hibernate:
                 dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         showSql: true
- server:
+
+server:
   port: 6064
   
- eureka:
+eureka:
     client:
         serviceUrl: 
             defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
     instance:
         preferIpAddress: true
-
-        
-   
-    
-        
-
