@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.desafio2.adminidtradorserver.controller;
+package br.com.desafio2.administradorserver.controller;
 
 import br.com.desafio2.administradorserver.model.Administrador;
 import br.com.desafio2.administradorserver.repository.AdministradorRepository;
+import java.security.MessageDigest;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class AdministradorController {
     
     @PostMapping
     public Administrador adicionar(@RequestBody Administrador administrador) {
+        administrador.setSenha(Cripto(administrador.getSenha()));
         return administradorRepository.save(administrador);
     }
     
@@ -50,7 +52,7 @@ public class AdministradorController {
                 .map(record -> {
                     record.setNome(administrador.getNome());
                     record.setEmail(administrador.getEmail());
-                    record.setSenha(administrador.getSenha());
+                    record.setSenha(Cripto(administrador.getSenha()));
                     Administrador administradorUpdated = administradorRepository.save(record);
                     return ResponseEntity.ok().body(administradorUpdated);
                 }).orElse(ResponseEntity.notFound().build());
@@ -64,5 +66,25 @@ public class AdministradorController {
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
+    
+    private String Cripto (String senha) {
+                  
+        try {
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+            byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigest) {
+                hexString.append(String.format("%02X", 0xFF & b));
+            }
+            String senhahex;
+                      senhahex = hexString.toString();
+                      senha= senhahex;
+        } catch (Exception e) {
+        }
+        
+        
+        return senha;
+    } 
 }
 
