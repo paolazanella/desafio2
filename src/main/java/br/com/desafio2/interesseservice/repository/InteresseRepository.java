@@ -5,7 +5,7 @@
 package br.com.desafio2.interesseservice.repository;
 
 import br.com.desafio2.interesseservice.model.Interesse;
-import br.com.desafio2.interesseservice.model.Interessemoldentity;
+import br.com.desafio2.interesseservice.model.Interesseldentity;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * @author Paola Zanella
  */
 @Repository
-public interface InteresseRepository extends JpaRepository<Interesse, Interessemoldentity >{
+public interface InteresseRepository extends JpaRepository<Interesse, Interesseldentity >{
     //O Spring JPA irá analisar automaticamente o nome do método e criar uma consulta a partir dele.
-    Optional<Interesse> findByItemEmprestimoIdentityIdEmprestimo(Long idImovel);
+    Optional<Interesse> findByInteresseIdentityIdImovel(Long idImovel);
 }

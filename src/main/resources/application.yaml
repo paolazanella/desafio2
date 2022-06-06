@@ -1,24 +1,22 @@
 spring:
-    application:
-        name: adminstrador-service
-    datasource:
-        url: jdbc:mysql://localhost:3306/desafio2
-        username: root
-        password: 
-    jpa:
-        hibernate:
-            ddlAuto: update
-        properties:
+        application:
+            name: adminstrador-service
+        datasource:
+            url: jdbc:mysql://localhost:3306/desafio2
+            username: root
+            password: 
+        jpa:
             hibernate:
-                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-        showSql: true
-
+                        ddlAuto: update
+            properties:
+                        hibernate:
+                                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+            showSql: true
 server:
-  port: 6064
-  
+        port: 6064 
 eureka:
-    client:
-        serviceUrl: 
-            defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-    instance:
-        preferIpAddress: true
+        client:
+                serviceUrl: 
+                           defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+        instance:
+             preferIpAddress: true

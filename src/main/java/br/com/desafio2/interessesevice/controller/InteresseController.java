@@ -5,7 +5,7 @@
 package br.com.desafio2.interessesevice.controller;
 
 import br.com.desafio2.interesseservice.model.Interesse;
-import br.com.desafio2.interesseservice.model.Interessemoldentity;
+import br.com.desafio2.interesseservice.model.Interesseldentity;
 import br.com.desafio2.interesseservice.repository.InteresseRepository;
 import java.util.List;
 import java.util.Optional;
@@ -35,13 +35,13 @@ public class InteresseController {
     }
      @GetMapping(value = "/{idImovel}/{idCliente}")
     public Optional<Interesse> listarPeloEmprestimoLivro(@PathVariable Long idImovel, @PathVariable Long idCliente) {
-        final Interessemoldentity identity = new Interessemoldentity(idImovel, idCliente);
+        final Interesseldentity identity = new Interesseldentity(idImovel, idCliente);
         return interesseRepository.findById(identity);
     }
     
     @GetMapping(value = "/{idImovel}")
     public Optional<Interesse> listarPeloIdImovel(@PathVariable Long idImovel) {
-        return interesseRepository.findByItemEmprestimoIdentityIdEmprestimo(idImovel);
+        return interesseRepository.findByInteresseIdentityIdImovel(idImovel);
     }
     
     @PostMapping
@@ -50,7 +50,7 @@ public class InteresseController {
     }
  @DeleteMapping(value="/{idImovel}/{idCliente}")
     public ResponseEntity deletar(@PathVariable Long idImovel, @PathVariable Long idCliente) {
-        final Interessemoldentity identity = new Interessemoldentity(idImovel, idCliente);
+        final Interesseldentity identity = new Interesseldentity(idImovel, idCliente);
         return interesseRepository.findById(identity)
                 .map(record-> {
                     interesseRepository.deleteById(identity);

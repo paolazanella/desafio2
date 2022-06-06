@@ -16,5 +16,5 @@ import lombok.Data;
 @Entity
 public class Interesse {
      @EmbeddedId
-     private Interesse interesse;
+     private Interesseldentity interesseldentity;
 }
