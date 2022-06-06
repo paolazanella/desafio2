@@ -1,11 +1,10 @@
-
 spring:
     application:
         name: imovel-service
     datasource:
         url: jdbc:mysql://localhost:3306/desafio2
         username: root
-        password: 
+        password:
     jpa:
         hibernate:
             ddlAuto: update

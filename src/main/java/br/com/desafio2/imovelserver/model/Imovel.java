@@ -18,27 +18,30 @@ import lombok.Data;
  * @author Paola Zanella
  */
 @Entity
-@Data 
+@Data
 public class Imovel {
+
     @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-       private Long id;
-@Column(nullable = false, name="id_tipo_imovel")
-       private Long idTipoImovel;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false, name = "id_tipo_imovel")
+    private Long idTipoImovel;
+    
     @Column(nullable = false, length = 100)
     private String titulo;
-    
-    @Column(nullable = false, unique = true, length = 500)
+
+    @Column(nullable = false, length = 500)
     private String descricao;
-    
+
     @Column(nullable = false, length = 200)
-    private Data  data_crincao;
-    
-     @Column(nullable = false, length = 2)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data_criacao;
+
+    @Column(nullable = false, length = 2)
     private char valor;
-    
-@Column(nullable = false)
-       private Integer status;
-    
-    
+
+    @Column(nullable = false)
+    private Integer status;
+
 }
