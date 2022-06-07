@@ -9,6 +9,7 @@ import br.com.desafio2.administradorserver.repository.AdministradorRepository;
 import java.security.MessageDigest;
 import java.util.List;
 import java.util.Optional;
+import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -81,6 +82,7 @@ public class AdministradorController {
                       senhahex = hexString.toString();
                       senha= senhahex;
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO NA CRIPTO DO ADM" + e);
         }
         
         
