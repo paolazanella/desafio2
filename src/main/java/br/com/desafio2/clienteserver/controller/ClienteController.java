@@ -6,8 +6,10 @@ package br.com.desafio2.clienteserver.controller;
 
 import br.com.desafio2.clienteserver.model.Cliente;
 import br.com.desafio2.clienteserver.repository.ClienteRepository;
+import java.security.MessageDigest;
 import java.util.List;
 import java.util.Optional;
+import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,6 +43,7 @@ public class ClienteController {
        
     @PostMapping
     public Cliente adicionar(@RequestBody Cliente cliente) {
+        cliente.setSenha(Cripto(cliente.getSenha()));
         return clienteRepository.save(cliente);
     }
     
@@ -50,7 +53,7 @@ public class ClienteController {
                 .map(record -> {
                     record.setNome(cliente.getNome());
                     record.setEmail(cliente.getEmail());
-                    record.setSenha(cliente.getSenha());
+                    record.setSenha(Cripto(cliente.getSenha()));
                     Cliente clienteUpdated = clienteRepository.save(record);
                     return ResponseEntity.ok().body(clienteUpdated);
                 }).orElse(ResponseEntity.notFound().build());
@@ -64,4 +67,24 @@ public class ClienteController {
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
+      private String Cripto (String senha) {
+                  
+        try {
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+            byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigest) {
+                hexString.append(String.format("%02X", 0xFF & b));
+            }
+            String senhahex;
+                      senhahex = hexString.toString();
+                      senha= senhahex;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO NA CRIPTO DO CLIENTE"+ e);
+        }
+        
+        
+        return senha;
+    } 
 }
