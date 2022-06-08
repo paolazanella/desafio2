@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.desafio2.imoveslserver.controller;
+package br.com.desafio2.imovelserver.controller;
 
-import br.com.dasafio2.imovelserver.repository.ImovelRepository;
+import br.com.desafio2.imovelserver.repository.ImovelRepository;
 import br.com.desafio2.imovelserver.model.Imovel;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Paola Zanella
  */
+
+@RestController
+@RequestMapping("/imoveis")
 public class ImovelController {
     @Autowired
     private ImovelRepository imovelRepository;

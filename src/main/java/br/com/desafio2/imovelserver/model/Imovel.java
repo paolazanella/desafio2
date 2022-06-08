@@ -34,12 +34,12 @@ public class Imovel {
     @Column(nullable = false, length = 500)
     private String descricao;
 
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_criacao;
 
     @Column(nullable = false, length = 2)
-    private char valor;
+    private Float valor;
 
     @Column(nullable = false)
     private Integer status;
