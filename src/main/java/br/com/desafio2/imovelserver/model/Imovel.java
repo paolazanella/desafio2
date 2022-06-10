@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import lombok.Data;
 
 /**
@@ -21,10 +22,13 @@ import lombok.Data;
 @Data
 public class Imovel {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+    private Long id;  
+    @Transient
+    TipoImovel tipoImovel;
+
     @Column(nullable = false, name = "id_tipo_imovel")
     private Long idTipoImovel;
     

@@ -5,6 +5,7 @@
 package br.com.desafio2.imovelserver.repository;
 
 import br.com.desafio2.imovelserver.model.Imovel;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ImovelRepository extends JpaRepository<Imovel, Long>{
-    
+     public List<Imovel> findAllByIdTipoImovel(Long idTipoImovel);
 }
