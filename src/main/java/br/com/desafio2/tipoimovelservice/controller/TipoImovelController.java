@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package br.com.desafio2.tipoimovelservice.controller;
 
 import br.com.desafio2.tipoimovelservice.model.TipoImovel;
@@ -68,4 +72,8 @@ public class TipoImovelController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-}
+
+
+   }
+
+ 

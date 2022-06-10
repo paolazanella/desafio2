@@ -4,6 +4,7 @@
  */
 package br.com.desafio2.tipoimovelservice.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,9 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class TipoImovel {
+public class TipoImovel implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,4 +32,12 @@ public class TipoImovel {
     
     @Transient
     List<Imovel> imoveis; 
+
+    public void setImovel(List<Imovel> listarPeloTipoImovel) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setImoveis(List<Imovel> listarPeloTipoImovel) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
