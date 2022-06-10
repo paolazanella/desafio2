@@ -43,7 +43,7 @@ public class ImovelController {
     public Optional<Imovel> listarPeloId(@PathVariable Long id) {
         return imovelRepository.findById(id);
     }
-    @GetMapping(value = "/tipo-imovel/{idTipoImovel}")
+    @GetMapping(value = "/tipo-imovel-service/{idTipoImovel}")
     public List<Imovel> listarPeloTipoImovel(@PathVariable Long idTipoImovel) {
         return imovelRepository.findAllByIdTipoImovel(idTipoImovel);
     }
